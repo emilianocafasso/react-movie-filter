@@ -39,6 +39,7 @@ function App() {
   const [filteredMovies, setFilteredMovies] = useState(movies)
 
   useEffect(() => {
+    console.log('useEffect attivato', selectedGenre);
 
     if (selectedGenre === "") {
       // se non si seleziona il genere, mostra tutti i film
@@ -55,8 +56,25 @@ function App() {
     <div className='container'>
       <h1>Catalogo Film</h1>
 
+      {/* filtro */}
+      <label htmlFor="" className='form-label mt-3'>
+        Filtra per genere:
+      </label>
+      <select
+        id="genreSelect"
+        value={selectedGenre}
+        onChange={(e) => setSelectedGenre(e.target.value)}
+        className='mx-2'
+      >
+
+        {genres.map(genre => (
+          <option key={genre} value={genre}>{genre}</option>
+        ))}
+
+      </select>
+
       {/* lista film */}
-      <div className='list-grup mt-3'>
+      <div className='list-group mt-3'>
         {movies.map(movie => (
           <div key={movie.title} className='list-group-item'>{movie.title}</div>
         ))}
