@@ -12,11 +12,34 @@ function App() {
     { title: 'Pulp Fiction', genre: 'Thriller' }
   ]
 
+
+  // creo nuovo array contenente solo i generi (senza ripetizioni)
+  const genres = []
+
+  movies.forEach(movie => {
+
+    let newGenre = true;
+
+    for (let i = 0; i < genres.length; i++) {
+      if (genres[i] === movie.genre) {
+        newGenre = false;
+        break;
+      }
+    }
+    if (newGenre === true) {
+      genres.push(movie.genre)
+    }
+  })
+  // console.log(genres);
+
+
+
   // stati per il filtro
   const [selectedGenre, setSelectedGenre] = useState('')
   const [filteredMovies, setFilteredMovies] = useState(movies)
 
   useEffect(() => {
+
     if (selectedGenre === "") {
       // se non si seleziona il genere, mostra tutti i film
       setFilteredMovies(movies)
@@ -31,6 +54,13 @@ function App() {
   return (
     <div className='container'>
       <h1>Catalogo Film</h1>
+
+      {/* lista film */}
+      <div className='list-grup mt-3'>
+        {movies.map(movie => (
+          <div key={movie.title} className='list-group-item'>{movie.title}</div>
+        ))}
+      </div>
     </div>
   )
 }
