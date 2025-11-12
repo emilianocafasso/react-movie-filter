@@ -12,6 +12,10 @@ function App() {
     { title: 'Pulp Fiction', genre: 'Thriller' }
   ]
 
+  // stati per il filtro
+  const [genre, setGenre] = useState('')
+  const [filteredMovies, setFilteredMovies] = useState(movies)
+
   return (
     <div className='container'>
       <h1>Catalogo Film</h1>
