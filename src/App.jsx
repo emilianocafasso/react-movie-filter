@@ -39,7 +39,8 @@ function App() {
   const [filteredMovies, setFilteredMovies] = useState(movies)
 
   useEffect(() => {
-    console.log('useEffect attivato', selectedGenre);
+
+    // console.log('useEffect attivato', selectedGenre);
 
     if (selectedGenre === "") {
       // se non si seleziona il genere, mostra tutti i film
@@ -75,7 +76,7 @@ function App() {
 
       {/* lista film */}
       <div className='list-group mt-3'>
-        {movies.map(movie => (
+        {filteredMovies.map(movie => (
           <div key={movie.title} className='list-group-item'>{movie.title}</div>
         ))}
       </div>
